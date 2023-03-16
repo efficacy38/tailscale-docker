@@ -7,6 +7,9 @@ services:
       TAILSCALE_AUTH_KEY: ${TAILSCALE_AUTH_KEY:?err}
       TAILSCALE_HOSTNAME: ${TAILSCALE_HOSTNAME:-tailscale-docker-simple-example}
       TAILSCALE_STATE_ARG: "mem:"
+      # optional: it can use to login into the repo
+      # TAILSCALED_OPT: "--socks5-server=0.0.0.0:1055 --outbound-http-proxy-listen=0.0.0.0:1055" # this would use the outbound proxy
+      # TAILSCALE_OPT: "--login-server https://headscale.xxx.xxx" # this may login to headscale server
   some-service-1:
     image: nginxdemos/hello
     network_mode: "service:tailscale"
